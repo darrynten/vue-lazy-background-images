@@ -1,0 +1,26 @@
+{
+  "name": "vue-lazy-background-images",
+  "version": "1.0.0",
+  "description": "Lazy background images. Only background images.",
+  "main": "main.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/darrynten/vue-lazy-background-images.git"
+  },
+  "keywords": [
+    "vue",
+    "vuejs",
+    "vue2",
+    "lazy loading",
+    "images",
+    "background images",
+    "loader",
+    "backgrounds"
+  ],
+  "author": "Darryn Ten",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/darrynten/vue-lazy-background-images/issues"
+  },
+  "homepage": "https://github.com/darrynten/vue-lazy-background-images#readme"
+}
