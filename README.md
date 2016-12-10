@@ -1,5 +1,5 @@
 # Lazy Background Images for Vue
-![npm version]()
+![npm version](https://badge.fury.io/js/vue-lazy-background-images.svg)
 
 #### vue-lazy-background-images
 
