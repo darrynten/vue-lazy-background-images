@@ -45,7 +45,7 @@ And put into your DOM
 And get this out
 
 ```html
-<div data-width="640" data-height="360" data-state="loaded" class="cam-viewport loaded" style="background-image: url("http://my-site.com/test-image.png"); background-size: cover"></div>
+<div data-width="640" data-height="360" data-state="loaded" class="cam-viewport loaded" style="background-image: url(http://my-site.com/test-image.png); background-size: cover"></div>
 ```
 
 You can see the image-source in the above example is a computed property,
