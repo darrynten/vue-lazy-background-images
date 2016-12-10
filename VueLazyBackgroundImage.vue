@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <div :class="imageState" :style="computedStyle" :data-width="imageWidth" :data-height="imageHeight" :data-state="imageState"></div>
-  </div>
+  <div :class="[imageClass, imageState]" :style="computedStyle" :data-width="imageWidth" :data-height="imageHeight" :data-state="imageState"></div>
 </template>
 
 <script>
@@ -11,6 +9,11 @@ export default {
       type: String,
       required: true
     },
+    imageClass: {
+      type: String,
+      required: false,
+      default: ''
+    },
     loadingImage: {
       type: String,
       required: true
@@ -18,41 +21,70 @@ export default {
     errorImage: {
       type: String,
       required: true
+    },
+    imageErrorCallback: {
+      type: Function,
+      required: false,
+      default: function() {}
+    },
+    imageSuccessCallback: {
+      type: Function,
+      required: false,
+      default: function() {}
+    },
+    backgroundSize: {
+      type: String,
+      required: false,
+      default: 'cover'
     }
   },
   data() {
     return {
       imageWidth: 0,
       imageHeight: 0,
-      imageState: null,
+      imageState: 'loading',
       asyncImage: new Image()
     }
   },
   computed: {
     computedStyle() {
-      
+      if (this.imageState === 'loading') {
+        return 'background-image: url(' + this.loadingImage + ');'
+      }
+
+      if (this.imageState === 'error') {
+        return 'background-image: url(' + this.errorImage + ');'
+      }
+
+      if (this.imageState === 'loaded') {
+        return 'background-image: url(' + this.asyncImage.src + '); background-size: ' + this.backgroundSize
+      }
+
+      return '';
     }
   },
   methods: {
-    fetchImage() {
-      this.asyncImage.onload = this.imageOnLoad()
-      this.asyncImage.onerror = this.imageOnError()
+    fetchImage(url) {
+      this.asyncImage.onload = this.imageOnLoad
+      this.asyncImage.onerror = this.imageOnError
       this.imageState = 'loading'
       this.asyncImage.src = this.imageSource
     },
     imageOnLoad() {
-      console.log(this, this.asyncImage, '===== SUCCESS ====')
       this.imageState = 'loaded'
-      this.imageWith = this.asyncImage.naturalWidth
+      this.imageWidth =  this.asyncImage.naturalWidth
       this.imageHeight = this.asyncImage.naturalHeight
+      this.imageSuccessCallback()
     },
-    imageOnError() {
-      console.log(this, this.asyncImage, '<<<< ERROR >>>>')
+    imageOnError(error) {
       this.imageState = 'error'
+      this.imageErrorCallback()
     }
   },
   mounted() {
-    console.log('mounted')
+    this.$nextTick(() => {
+      this.fetchImage()
+    })
   }
 }
 </script>
