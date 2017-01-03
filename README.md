@@ -19,13 +19,13 @@ npm install --save-dev vue-lazy-background-images
 Import the component
 
 ```js
-import VueLazyBackgroundImages from 'vue-lazy-background-images'
+import VueLazyBackgroundImage from 'vue-lazy-background-images'
 ```
 
 Register the component
 
 ```js
-Vue.component('lazy-background', VueLazyBackgroundImages)
+Vue.component('lazy-background', VueLazyBackgroundImage)
 ```
 
 And put into your DOM

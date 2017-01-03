@@ -70,7 +70,7 @@ export default {
       this.imageState = 'loading'
       this.asyncImage.src = this.imageSource
     },
-    imageOnLoad() {
+    imageOnLoad(success) {
       this.imageState = 'loaded'
       this.imageWidth =  this.asyncImage.naturalWidth
       this.imageHeight = this.asyncImage.naturalHeight
