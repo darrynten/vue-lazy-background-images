@@ -64,11 +64,15 @@ export default {
     }
   },
   methods: {
+    loadImage(url) {
+      this.imageState = 'loading'
+      this.fetchImage(url)
+    },
     fetchImage(url) {
       this.asyncImage.onload = this.imageOnLoad
       this.asyncImage.onerror = this.imageOnError
       this.imageState = 'loading'
-      this.asyncImage.src = this.imageSource
+      this.asyncImage.src = url || this.imageSource
     },
     imageOnLoad(success) {
       this.imageState = 'loaded'
