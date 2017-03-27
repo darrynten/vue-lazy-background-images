@@ -1,5 +1,5 @@
 <template>
-  <div :class="[imageClass, imageState]" :style="computedStyle" :data-width="imageWidth" :data-height="imageHeight" :data-state="imageState"></div>
+  <div :class="[imageClass, imageState]" :style="computedStyle" :data-width="imageWidth" :data-height="imageHeight" :data-state="imageState" :data-offset-x="offsetX" :data-offset-y="offsetY"></div>
 </template>
 
 <script>
@@ -36,6 +36,21 @@ export default {
       type: String,
       required: false,
       default: 'cover'
+    },
+    offsetX: {
+      type: Number,
+      required: false,
+      default: 0
+    },
+    offsetY: {
+      type: Number,
+      required: false,
+      default: 0
+    },
+    backgroundPosition: {
+      type: String,
+      required: false,
+      default: 'center center'
     }
   },
   data() {
@@ -57,7 +72,7 @@ export default {
       }
 
       if (this.imageState === 'loaded') {
-        return 'background-image: url(' + this.asyncImage.src + '); background-size: ' + this.backgroundSize
+        return 'background-image: url(' + this.asyncImage.src + '); background-size: ' + this.backgroundSize + '; background-position: ' + this.backgroundPosition + ';'
       }
 
       return '';
