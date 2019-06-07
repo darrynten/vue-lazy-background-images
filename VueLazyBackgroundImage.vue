@@ -1,5 +1,7 @@
 <template>
-  <div :class="[imageClass, imageState]" :style="computedStyle" :data-width="imageWidth" :data-height="imageHeight" :data-state="imageState"></div>
+  <div :class="[imageClass, imageState]" :style="computedStyle" :data-width="imageWidth" :data-height="imageHeight" :data-state="imageState">
+    <slot></slot>
+  </div>
 </template>
 
 <script>
