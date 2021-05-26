@@ -36,6 +36,16 @@ export default {
       type: String,
       required: false,
       default: 'cover'
+    },
+    positionX: {
+      type: String,
+      required: false,
+      default: '50%'
+    },
+    positionY: {
+      type: String,
+      required: false,
+      default: '50%'
     }
   },
   data() {
@@ -57,7 +67,7 @@ export default {
       }
 
       if (this.imageState === 'loaded') {
-        return 'background-image: url(' + this.asyncImage.src + '); background-size: ' + this.backgroundSize
+        return 'background-image: url(' + this.asyncImage.src + '); background-size: ' + this.backgroundSize + '; background-position: ' + this.positionX + ' ' + this.positionY
       }
 
       return '';
