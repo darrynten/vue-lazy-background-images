@@ -38,7 +38,9 @@ And put into your DOM
   image-class="cam-viewport"
   background-size="cover"
   :image-success-callback="successCallback"
-  :image-error-callback="errorCallback">
+  :image-error-callback="errorCallback"
+  position-x="30%"
+  position-y="66%">
 </lazy-background>
 ```
 
@@ -62,6 +64,8 @@ Width and height are for the *image* not the containing div.
 * error-image - Path to the error image (required)
 * image-class - Any classes you wish to include on the image (optional)
 * background-size - CSS background-size value (optional, default is `cover`)
+* position-x - CSS background-position-x value (optional, default is `50%`)
+* position-y - CSS background-position-y value (optional, default is `50%`)
 * image-success-callback - Function on success (optional)
 * image-error-callback - Function on error (optional)
 
@@ -85,6 +89,10 @@ is the dimensions of the actual image (not the rendered div)
 #### Background size
 
 This is `cover` by default although it can be overridden.
+
+#### Background position
+
+Set with values from two different props, `position-x` and `position-y` this will set the background-position. Useful for setting focal points on images that could appear at different dimensions to ensure odd cropping doesn't occur. 
 
 #### Callbacks
 
